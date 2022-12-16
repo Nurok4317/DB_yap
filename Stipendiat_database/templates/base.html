@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./css_final.css">
+    
+    <script src="./filter.js"></script>
+
+    <title>Fixed table</title>
+</head>
+
+<body>
+    
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+          <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+          <span class="fs-4">Simple header</span>
+        </a>
+  
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
+          <li class="nav-item"><a href="#" class="nav-link  ">Main</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">List of students</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Profile</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">News</a></li>
+        </ul>
+      </header>
+      {% comment %} <title>{% block content %}{% endblock %}</title> {% endcomment %}
+
+
+    <div class="heading">
+    <h1>Dropdown table filter using JavaScript</h1>
+    <!-- <button id="get-unique-values" onclick="getUniqueValuesFromColumn()">Get unique column values</button> -->
+</div>
+    <div class="outer-wrapper">
+    <div class="table-wrapper">
+    <table id="emp-table">
+        <thead>
+            <th col-index = 1>Name</th>
+            <th col-index = 2>Surname</th>
+            <th col-index = 3>Group
+                <select class="table-filter" onchange="filter_rows()">
+                    <option value="all"></option>
+                </select>
+            </th>
+        </thead>
+        <tbody>
+            {% if data %}
+    {% for i in data %}
+            <tr>
+                <td>{{i.name}}</td>
+                <td>{{i.surname}}</td>
+                <td>{{i.group}}</td>
+            </tr>
+            {% endfor %}
+    {% endif %}
+        </tbody>
+    </table>
+    <!-- <script>getUniqueValuesFromColumn()
+    </script> -->
+    <script>
+        window.onload = () => {
+            console.log(document.querySelector("#emp-table > tbody > tr:nth-child(1) > td:nth-child(2) ").innerHTML);
+        };
+
+        getUniqueValuesFromColumn()
+        
+    </script>
+</div>
+</div>
+</body>
+
+</html>
